@@ -52,6 +52,9 @@
                          text:"Hi",
                          time:new Date(),
                      })
+            firestore.collection("name").doc("document").get().then(doc =>{
+                        console.log(doc.data())
+                    })
             /**
              * * Main Runtime
              * 
@@ -73,7 +76,9 @@
                          text:"Hello world",
                          time:new Date(),
                      })
-                     
+                     firestore.collection("name").doc("document").get().then(doc =>{
+                        console.log(doc.data())
+                    })
                      
                 })
                 id("back").on("click", () => {
@@ -86,7 +91,9 @@
                          text:"Bye Bye",
                          time:new Date(),
                      })
-                
+                    firestore.collection("name").doc("document").get().then(doc =>{
+                        console.log(doc.data())
+                    })
                      
                 })
             })
