@@ -35,16 +35,23 @@
         <script defer>
             // Firebase Setup
             const firebaseConfig = {
-                /**
-                 * ! Place connection script here
-                 * ...
-                 */
+                apiKey: "AIzaSyB2YJIxj82klqTjqYeoKRZCaF4aTic5AvQ",
+                authDomain: "itkmitl-sec2.firebaseapp.com",
+                projectId: "itkmitl-sec2",
+                storageBucket: "itkmitl-sec2.appspot.com",
+                messagingSenderId: "805131087658",
+                appId: "1:805131087658:web:b30369afdd16ac92aa7853",
+                measurementId: "G-KSH3Z3XBK6"
             }
 
             firebase.initializeApp(firebaseConfig)
 
             const firestore = firebase.firestore()
-
+            firestore.collection("name").doc("document").set({
+                         value:1_500_000,
+                         text:"Hi",
+                         time:new Date(),
+                     })
             /**
              * * Main Runtime
              * 
@@ -56,17 +63,38 @@
                  * ? The function will run.
                  * */
                 id("read").on("click", () => {
-                    id("title").textContent = "Clicked"
-
+                    id("title").textContent = "Past"
+                    
                     /**
                      * * Do something with Firestore here
                      */
+                     firestore.collection("name").doc("document").update({
+                         value:1_000_000,
+                         text:"Hello world",
+                         time:new Date(),
+                     })
+                     
+                     
+                })
+                id("back").on("click", () => {
+                    id("title").textContent = "Now"
+                    /**
+                     * * Do something with Firestore here
+                     */
+                     firestore.collection("name").doc("document").update({
+                         value:2_000_000,
+                         text:"Bye Bye",
+                         time:new Date(),
+                     })
+                
+                     
                 })
             })
         </script>
     </head>
     <body>
         <h1 id=title>---</h1>
-        <button id=read>Read</button>
+        <button id=read>Past</button>
+        <button id=back>Now</button>
     </body>
 </html>
